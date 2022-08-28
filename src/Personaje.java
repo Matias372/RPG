@@ -5,7 +5,7 @@ public class Personaje {
 	String Raza;
 	String Nombre;
 	Clases clase = new Clases();
-	boolean Seguro = true; // Hogar=True / Ciudad = False / Masmorra= False.  usar estado para verificar si se puede dormir
+	boolean Seguro = true; // Ciudad=True / Masmorra= False.  usar estado para verificar si se puede dormir
 	int Vida = 100;
 	int VidaMax = 100; //vida completa
 	int Mana = 100;
@@ -22,33 +22,24 @@ public class Personaje {
 	
 	
 	
-	public void Accion() {
-	
-		System.out.println("Deseas descansar?");
-		
-	}
-	
-	public void Atacar() {
-	
-	}
-	
 	public void Dormir() {
 		
-		Scanner respuesta = new Scanner(System.in);
+		Scanner Respuesta = new Scanner(System.in);
 		
 		System.out.println("Deseas descansar?");
-		System.out.println("-SI		-NO");
-		String decision = respuesta.nextLine();
+		System.out.println("-SI \n-NO");
+		String decision = Respuesta.nextLine();
 		
 		switch (decision) {
 		
 		case "SI":
 			if(Seguro == true) {
-				System.out.println("...Estas durmiendo.");
+				System.out.println("Te fuiste a descansar a tu hogar.");
 				Vida = VidaMax;
 				Mana = ManaMax;
-				System.out.println("Te recuperaste.");
-				
+				System.out.println("...Recuperaste la salud y mana al dormir.");
+			}else {
+				System.out.println("No es posible dormir en la ubicacion actual");
 			}
 			break;
 			
