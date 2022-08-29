@@ -1,0 +1,39 @@
+generar funcion de busqueda.
+ 	- averiguar comando para buscar por probabilidad.
+ 	- investigar tema de probabilidad
+ 	- separar el buscar por ubicacion, ciudad o masmorra.
+ 	- masmorra: oro, objeto, mounstruo, nada, ...pensar que mas
+ 	- Ciudad: separar buscar en tienda (generar tienda mas adelante), Explorar, en todo caso armeria por separado de la tienda. 
+ 	- Explorar ciudad: oro, nada, NPC, algun secreto (muy baja probabilidad)
+ 	
+ 
+ generar funcion Batalla
+  - generar goblin en una nueva clase llamada Mounstruos. 
+  - cada mounstruo futuro generar ahi. agregar estadisticas, nivel (asi encontras nuevos mounstruos al subir de nivel)
+  - revisar el desbloqueo de nuevos moustruos por nivel (generar EXP y LVL antes)
+  - revisar el tema de daño, defensa, vida (...)
+  
+  
+ generar Clases
+  - cada clase sube cierta estadistica....revisar el tema de agilidad/precision (aciertos y evasion.....es estudiar otra materia)
+  -...
+ 
+ 
+ generar Inventario
+  - Matriz con variable[99] dentro de cada espacio.
+  - descripcion de objeto.
+  - generar pocion y daga como primeros objetos para revisar funcion
+  - (comando equipar y consumir)
+ 
+ 
+ 
+ ......(BASE DE DATOS)....(GUARDAR).
+ generar clase objeto
+ -colocar codigo de identidad, cantidad(va dentro de la clase o en la matriz/inventario?), nombre, categoria, descripcion, uso (el uso se utiliza en el codigo? ej. cura 30 de vida)
+ - generar lista de objetos
+ - generar comando para guardar objeto en inventario
+ - 
+ 
+ 
+ ......(a futuro, cuando funcione agregar interfaz, CSS, HTML).
+ 
