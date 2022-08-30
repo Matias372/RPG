@@ -5,24 +5,37 @@ public class Main {
 	
 		public static void main(String args[]) {
 		
-			System.out.println("Inicio de Juego.");
+			System.out.println("Inicio de Programa.");
 			String Decision = "NO";
 			Personaje Jugador = new Personaje();
-			
+			Scanner Respuesta = new Scanner(System.in);
 			// agregar inicio donde elige nombre y clase. crear clases
 			
+			//MENU
+			System.out.println("-Iniciar Partida\n-Cargar Partida");
+			String Inicio = Respuesta.nextLine();
+			Inicio = Inicio.toUpperCase();
+			switch (Inicio) {
 			
-			
-			do {//NOMBRE-----------------------------------------------
+			case "INICIAR PARTIDA":
+				//Nueva partida-----------------------------------------
+				do {//NOMBRE-----------------------------------------------
+					
+					System.out.println("Escribe el nombre del personaje:");
+					Jugador.Nombre = Respuesta.nextLine();
+					System.out.println("Tu nombre es: " + Jugador.Nombre + "?\n-SI\n-NO");
+					Decision = Respuesta.nextLine();
+					Decision = Decision.toUpperCase();
+					
+				}while (Decision.equals("SI") == false);
+				break;
 				
-				System.out.println("Escribe el nombre del personaje:");
-				Scanner Respuesta = new Scanner(System.in);
-				Jugador.Nombre = Respuesta.nextLine();
-				System.out.println("Tu nombre es: " + Jugador.Nombre + "?\n-SI\n-NO");
-				Decision = Respuesta.nextLine();
-				Decision = Decision.toUpperCase();
-				
-			}while (Decision.equals("SI") == false);
+			case "CARGAR PARTIDA":	
+				//Cargar partida---------------------------------------------
+				System.out.println("Aun no disponible");
+				break;
+			}
+			//---------------------------------------
 			
 			do {//ACCION-----------------------------------------------
 					

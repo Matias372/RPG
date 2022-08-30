@@ -9,8 +9,8 @@ generar funcion de busqueda.
  
  generar funcion Batalla
   - generar goblin en una nueva clase llamada Mounstruos. 
-  - cada mounstruo futuro generar ahi. agregar estadisticas, nivel (asi encontras nuevos mounstruos al subir de nivel)
-  - revisar el desbloqueo de nuevos moustruos por nivel (generar EXP y LVL antes)
+  - cada monstruo futuro generar ahi. agregar estadisticas, nivel (asi encontras nuevos monstruos al subir de nivel)
+  - revisar el desbloqueo de nuevos monstruos por nivel (generar EXP y LVL antes)
   - revisar el tema de daño, defensa, vida (...)
   
   
