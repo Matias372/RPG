@@ -2,15 +2,16 @@ import java.util.Scanner;
 
 public class Personaje {
 
-	String Ubicacion="Ciudad";
+	String Ubicacion="Ciudad"; // Ciudad / Mazmorra
+	int Piso=0;// piso de mazmorra, si esta en ciudad ser cero.
 	String Nombre;
 	boolean Salir = false;
 	boolean Seguro = true; // Ciudad=True / Masmorra= False.  usar estado para verificar si se puede dormir
 	//ESTADISTICAS
 	int Vida = 100;
-	int VidaMax = 100; //vida completa
+	int VidaMax = 100; //vida maximo
 	int Mana = 100;
-	int ManaMax =100; //mana
+	int ManaMax =100; //mana maximo
 	int Fuerza = 5;
 	int Agilidad = 5;
 	int Defensa = 5;
@@ -22,44 +23,69 @@ public class Personaje {
 	
 	//ACCIONES
 	
-	public void Accion() {
+	public void Accion() {//TOMA DE DECISIONES PRINCIPAL
 		
 		Scanner Respuesta = new Scanner(System.in);
 	
 		System.out.println("Cual es tu proxima accion?");
-		System.out.println("-Atacar\n-Dormir\n-Consumir\n-Mover\n-Buscar\n-Salir");
-		String decision = Respuesta.nextLine();
-		switch (decision) {
-	
-		case "Atacar":
-			if(Seguro == false) {//agregar la condicion de que haya encontrado mounstruo. con la funcion buscar.
+		
+		if(Ubicacion == "Ciudad") {
+			System.out.println("-Dormir\t-Ver Personaje\n-Mover\t-Salir");
+			String decision = Respuesta.nextLine();
+			decision = decision.toUpperCase();
 			
-			}else {
-				System.out.println("No es posible Atacar.");
-			}	
-			break;
-			
-		case "Dormir":
-			Dormir();
-			break;
-			
-		case "Consumir":
-			break;
-			
-		case "Mover":
-			break;
-			
-		case "Buscar":
-			break;
-			
-		case "Salir":
-			Salir();
-			break;
-			//agregar funcion para ver estadisticas
-		default: 
-			System.out.println("No se entendio la respuesta.");
-			Accion();
+			switch(decision) {
+				
+			case "DORMIR":
+				Dormir();
+				break;
+			case "VER PERSONAJE":
+				System.out.println("EN CONSTRUCCION...");
+				// generar clase equipo, clase inventario, acomodar estadisticas.
+				Accion();
+				break;
+			case "MOVER":
+				Mover(); //modificar funcion. dependiendo de ubicacion cambiar menu (colocar -Tienda -Explorar ciudad -Mazmorra -Atras)
+				break;
+			case "SALIR":
+				Salir();
+				break;
+				default:
+					System.out.println("No se entendio la respuesta.");
+					Accion();
+					break;
+			}
 		}
+		else if(Ubicacion == "Mazmorra") {
+			System.out.println("-Explorar\t-Ver Personaje\n-Mover\t-Salir");
+			String decision = Respuesta.nextLine();
+			decision = decision.toUpperCase();
+			switch(decision) {
+			
+			case "EXPLORAR":
+				System.out.println("EN CONSTRUCCION...");
+				// generar Accion Explorar
+				Accion();
+				break;
+			case "VER PERSONAJE":
+				System.out.println("EN CONSTRUCCION...");
+				// generar clase equipo, clase inventario, acomodar estadisticas.
+				Accion();
+				break;
+			case "MOVER":
+				Mover(); //modificar funcion. dependiendo de ubicacion cambiar menu (colocar -Piso -Ciudad -Atras)
+				break;
+			case "SALIR":
+				Salir();
+				break;
+				default:
+					System.out.println("No se entendio la respuesta.");
+					Accion();
+					break;
+			}
+		}
+		
+		
 	}
 	//-------------------------------------------------------------------------------------------------------------------------
 	public void Dormir() {
@@ -106,24 +132,57 @@ public class Personaje {
 		
 		Scanner Respuesta = new Scanner(System.in);
 		
+		if (Ubicacion == "Ciudad") {
+			System.out.println("Estas en la " + Ubicacion + ". Donde deseas ir?");
+			System.out.println("-Tienda\t-Explorar Ciudad\n-Mazmorra\t-Atras");
+			String decision = Respuesta.nextLine();
+			
+			switch (decision) {
+			
+			case "Tienda":
+				break;
+				
+			case "Explorar Ciudad":
+				break;
+				
+			case "Mazmorra":
+				break;
+				
+			case "Atras":
+				break;
+			
+			default:
+				System.out.println("No se entendio la respuesta.");
+				Mover();
+				break;
+			}
+		}
+		else if(Ubicacion =="Mazmorra") {
+			
+		}
+		
+		
+		/*
+		Scanner Respuesta = new Scanner(System.in);
+		
 		System.out.println("Estas en la " + Ubicacion + ". Donde deseas ir?");
-		System.out.println("-Ciudad \n-Masmorra");
+		System.out.println("-Ciudad \n-Mazmorra");
 		String decision = Respuesta.nextLine();
-		decision = decision.toUpperCase();
+		
 		
 		switch (decision) {
 		
-			case "CIUDAD":
+			case "Ciudad":
 				
-				Ubicacion = "CIUDAD";
+				Ubicacion = "Ciudad";
 				Seguro = true;
 				System.out.println("Estas en la " + Ubicacion);
 				Accion();
 					
 				break;
 				
-			case "MASMORRA":
-				Ubicacion = "MASMORRA";
+			case "Mazmorra":
+				Ubicacion = "Mazmorra";
 				Seguro = false;
 				System.out.println("Estas en la " + Ubicacion);
 				Accion();
@@ -135,10 +194,10 @@ public class Personaje {
 				break;
 		
 		}
-		
+	*/	
 	}
 	//-------------------------------------------------------------------------------------------------------------------------
-	public void Buscar() {
+	public void Explorar() {
 		
 	}
 	//-------------------------------------------------------------------------------------------------------------------------
