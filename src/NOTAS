@@ -34,6 +34,8 @@ generar funcion de busqueda.
  - generar comando para guardar objeto en inventario
  - 
  
- 
+ MISIONES
+ -las misiones necesitan un codigo de identificacion como variable. boolean Nombre_Active = false;
+ - cuando se activa la mision se coloca un true en la variable lo que permite la caida de ciertos objetos de la mision en la masmorra. o recuento de muertes.
  ......(a futuro, cuando funcione agregar interfaz, CSS, HTML).
  

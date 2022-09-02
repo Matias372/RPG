@@ -45,7 +45,7 @@ public class Personaje {
 				//vuelve solo a Accion();
 				break;
 			case "MOVER":
-				Mover(); //modificar funcion. dependiendo de ubicacion cambiar menu (colocar -Tienda -Explorar ciudad -Mazmorra -Atras)
+				Mover(); 
 				break;
 			case "SALIR":
 				Salir();
@@ -73,7 +73,7 @@ public class Personaje {
 				//vuelve solo a Accion();
 				break;
 			case "MOVER":
-				Mover(); //modificar funcion. dependiendo de ubicacion cambiar menu (colocar -Piso -Ciudad -Atras)
+				Mover(); 
 				break;
 			case "SALIR":
 				Salir();
