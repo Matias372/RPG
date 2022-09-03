@@ -17,8 +17,8 @@ public class Personaje {
 	int Defensa = 5;
 	int Inteligencia = 5;
 	//variables extra
-	private float Dinero = 0;
-	private float Experiencia =0;
+	public float Dinero = 0;
+	public float Experiencia =0;
 	// agregar variable clase
 	
 	//ACCIONES
@@ -69,6 +69,8 @@ public class Personaje {
 				break;
 			case "VER PERSONAJE":
 				System.out.println("EN CONSTRUCCION...");
+				System.out.println(Vida);
+				System.out.println(Mana);
 				// generar clase equipo, clase inventario, acomodar estadisticas.
 				//vuelve solo a Accion();
 				break;
