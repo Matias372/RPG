@@ -1,6 +1,9 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Inventario {
 
@@ -9,15 +12,13 @@ public class Inventario {
 		public int F=20;
 		public int C=6;
 	//GENERAR ATRIBUTOS DE LA CLASE (MATRIZ[][]= OBJECT()?)
-		Objeto [][] Mochila = new Objeto[F][C];
+		//Arraylist....como cambiar una variable del objeto en la posicion x. Ej: aumentar en 1 la Cantidad del objeto en la posision i.
+		ArrayList<Objeto> Mochila = new ArrayList<Objeto>();
+	
 	
 		//UTILIZAR SOLO CUANDO SE GENERA UNA NUEVA PARTIDA Y DESPUES DE GENERAR EL INVENTARIO.
 		private void LimpiarMochila(){
-			for(int i=0; i < Mochila.length ; i++ ) {
-				for(int r=0; r < Mochila[i].length; r++) {
-					Mochila[i][r]=null;
-				};
-			}
+			Mochila.clear();
 		};
 		
 		
@@ -50,78 +51,232 @@ public class Inventario {
 	
 	
 	//---------------------------------------------------------------------------------------------------------------
-	
-	
-	//ACCIONES---------------------------------------------
-	
-	
 	//COLOCAR OBJETO EN INVENTARIO
-	//verifica si es consumible o equipo. si es equipo agregarlo en un espacio vacio aunque ya lo tengas, si es consumible aumentear cantidad
-		public void GuardarObjeto(Objeto Item) {
+	
+		public void GuardarObjeto(Objeto Item, int Limit, int Cantidad) {
 			
 			boolean colocado = false;
 			if (Item.Categoria == "Consumible") {
 				
 				
-				for(int i=0; i < Mochila.length ; i++ ) {
-					for(int r=0; r < Mochila[i].length; r++) {
+				for(int i=0; i < Mochila.size() ; i++ ) {
 						
-						if(colocado == false && Mochila[i][r].Cod_id == Item.Cod_id) {
+					if(colocado == false && Mochila.get(i).Cod_id == Item.Cod_id) {
 							
-							Mochila[i][r].Cantidad += 1;  //MODIFICAR MAS ADELANTE PARA QUE SUME LA CANTIDAD ENCONTRADA Ej: 10 pociones
-							colocado = true;
+						Mochila.get(i).Cantidad += Cantidad;  //MODIFICAR MAS ADELANTE PARA QUE SUME LA CANTIDAD ENCONTRADA Ej: 10 pociones
+						colocado = true;
 							
-						};
-					}
+					};
+					
 				}
 				
 				// SI EL ANTERIOR FOR NO ENCUENTRA EL OBJETO EN EL INVENTARIO LO COLOCA EN UN ESPACIO VACIO
-				for(int i=0; i < Mochila.length ; i++ ) {
-					for(int r=0; r < Mochila[i].length; r++) {
-						
-						
-						// colocar despues de verificar cada espacio.
-						if (colocado == false && Mochila[i][r]==null) {
-							
-							Mochila[i][r] = Item;//AGREGAR DEBAJO LA CANTIDAD QUE AGREGA AL INVENTARIO
-							colocado = true;
-							
-						}	
-					}
+				if(colocado == false && Mochila.size() < Limit) {
+					
+					Item.Cantidad = Cantidad;
+					Mochila.add(Item);
+					
 				}
 				
 			}else if (Item.Categoria == "Equipo" || Item.Categoria == "Mision" ) {
 				
-			
-				for(int i=0; i < Mochila.length ; i++ ) {
-					for(int r=0; r < Mochila[i].length; r++) {
+					
 						
-						
-						// colocar despues de verificar cada espacio.
-						if (colocado == false && Mochila[i][r]==null) {
+					if (colocado == false && Mochila.size() < Limit) {
 							
-							Mochila[i][r] = Item;//AGREGAR DEBAJO LA CANTIDAD QUE AGREGA AL INVENTARIO
-							colocado = true;
+						Mochila.add(Item);
+						colocado = true;
 							
-						}	
-					}
-				}
+					}	
+					
+				
 			}
 			
 			
 			if(colocado == false) {
 				System.out.println("El inventario esta lleno. Vende algunos objetos para hacer espacio.");
+				// Preguntar si quiere intercambiarlo por otro objeto. If(si){
+				Scanner Respuesta = new Scanner(System.in);
+				
+				while(colocado == false) {
+					
+					System.out.println("Deseas intercambiarlo por un objeto del inventario?");
+					System.out.println("-SI\n-NO");
+					String decision = Respuesta.nextLine();
+					decision = decision.toUpperCase();
+					
+					if(decision == "SI") {
+						
+						//for{for{}} para mostrar todos los objetos
+						for(int i=0; i < Mochila.size(); i++) {
+							System.out.println("- "+Mochila.get(i).Nombre);
+						}
+						System.out.println("- Descartar");
+						// preguntar cual quiere cambiar. 
+						System.out.println("Cual objeto deseas cambiar por "+ Cantidad + " " + Item.Nombre);
+						decision = Respuesta.nextLine();
+						boolean Ubicado =false;
+							if(decision == "Descartar") {
+								colocado = true;
+							}else{
+								
+								for(int i=0; i < Mochila.size() ; i++ ) {
+									
+									if(colocado == false && Mochila.get(i).Nombre == decision) {// ubicar objeto por nombre.
+										
+										Ubicado=true;
+										System.out.println("Estas seguro de cambiar " + Mochila.get(i).Cantidad + " " + Mochila.get(i).Nombre + "por " + Cantidad + " " + Item.Nombre + "?");
+										decision = Respuesta.nextLine();
+										decision = decision.toUpperCase();
+										
+										if(decision == "SI") {
+											Item.Cantidad = Cantidad;
+											Mochila.set(i,Item);
+											colocado = true;
+										}else if(decision == "NO") {
+											
+										}else {
+											System.out.println("No se entendio la respuesta.");
+										}
+											
+									};
+									
+								}
+								
+							}
+							if(Ubicado == false) {
+								System.out.println("No se entendio la respuesta.");
+							}
+					}
+					
+				}
 			};
 			
 		}
 		
+	//---------------------------------------------------------------------------------------------------------------	
+	//Organizar OBJETO DENTRO DEL INVENTARIO
+	private void OrganizarAZ() {
 		
-	//MOVER OBJETO DENTRO DEL INVENTARIO
-	
+	}
+	//---------------------------------------------------------------------------------------------------------------
 	//VENDER OBJETO
+	public int Vender() {
+		
+		int x=0;
+		Scanner Respuesta = new Scanner(System.in);
+		System.out.println("Deseas vender un objeto?"); //verificar si quiere vender. if
+		System.out.println("-SI\n-NO");
+		String decision = Respuesta.nextLine();
+		decision = decision.toUpperCase();
+			if(decision == "SI") {
+				
+				for(int i=0; i < Mochila.size(); i++) {
+					System.out.println("- "+Mochila.get(i).Nombre);
+				}
+				System.out.println("- Cancelar");
+				
+				// preguntar cual quiere Vender. 
+				System.out.println("Cual objeto deseas vender?");
+				decision = Respuesta.nextLine();
+				boolean Ubicado =false;
+				if(decision == "Atras") {
+					
+				}else{
+					
+					for(int i=0; i < Mochila.size() ; i++ ) {
+						
+						if(Mochila.get(i).Nombre == decision) {//VENDE EQUIPO
+							
+							Ubicado=true;
+							if(Mochila.get(i).Categoria == "Equipo") {
+								System.out.println("Estas seguro de vender "  + Mochila.get(i).Nombre + "?");
+								decision = Respuesta.nextLine();
+								decision = decision.toUpperCase();
+								
+								if(decision == "SI") {
+									
+									x = Mochila.get(i).ValorVenta;
+									Mochila.remove(i);
+									
+								}else if(decision == "NO") {
+									Vender();
+								}else {
+									System.out.println("No se entendio la respuesta.");
+									Vender();
+								}
+							}else if(Mochila.get(i).Categoria == "Consumible") { // VENDE CONSUMIBLE
+								
+								boolean Ok = false;
+								
+								while(Ok == false) {
+									System.out.println("tienes " + Mochila.get(i).Cantidad + ". Cuantos deseas vender?");
+									int Cant_Vender = Respuesta.nextInt();
+									
+									if(Cant_Vender <= Mochila.get(i).Cantidad) {
+										System.out.println("Estas seguro de vender " + Mochila.get(i).Cantidad + " " + Mochila.get(i).Nombre + "?");
+										decision = Respuesta.nextLine();
+										decision = decision.toUpperCase();
+										
+										if(decision == "SI") {
+											
+											Ok=true;
+											x = (Mochila.get(i).ValorVenta * Cant_Vender);
+											
+											if(Cant_Vender == Mochila.get(i).Cantidad) {
+												Mochila.remove(i);
+											}else {
+												Mochila.get(i).Cantidad -= Cant_Vender;
+											}
+											
+										}else if(decision == "NO") {
+											//vuelve solo a preguntar la cantidad a vender
+										}else {
+											System.out.println("No se entendio la respuesta.");
+										}
+									}
+									
+								}
+							}
+						};
+						
+					}
+					
+				}
+				if(Ubicado == false) {
+					System.out.println("No se entendio la respuesta.");
+				}
+				
+			}else if (decision == "NO") {
+				
+			}else {
+				System.out.println("No se entendio la respuesta.");
+				Vender();
+			};
+		//for{for{}} para mostrar todos los objetos
+		// preguntar cual quiere vender. 
+		// ubicar objeto por nombre.
+		//verificar categoria. if Consumible{
+		//Consumible: preguntar cantidad
+		//verificar que CantidadAVender <= Objeto.Cantidad
+		//aumentar x = (Objeto.Valor * CantidadAVender)
+		// Disminuir la Objeto.Cantidad-= CantidadAVender
+		//if (Objeto.Cantidad == 0){ Matriz[][]==null;
+		//
+		
+		return x;
+		
+	}
 	
 	
 	
+	//VER INVENTARIO. DESCRIPCIONES DE OBJETOS, SI ES EQUIPO PODER EQUIPARLO... PASARLO A OBJETO (Arma, Armadura, Casco, Escudo)
+	public void VerInventario() {
+		
+	}
 	
-	
+	public Objeto Equipar() {
+		
+		return ;
+	}
 }

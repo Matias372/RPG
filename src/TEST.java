@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class TEST {
 
@@ -17,8 +19,16 @@ public class TEST {
 		System.out.println(Obj_Temporal.Categoria);
 	
 	
-		TestMochila.Mochila[2][2]= Obj_Temporal;
+		//TestMochila.Mochila[2][2]= Obj_Temporal;
 		
-		System.out.println(TestMochila.Mochila[2][2].Cod_id);
+		//System.out.println(TestMochila.Mochila[2][2].Cod_id);
+		
+		
+		ArrayList<Objeto> Almacenamiento = new ArrayList<Objeto>();
+		Almacenamiento.add(Obj_Temporal);
+		System.out.println(Almacenamiento.get(0).Cantidad);
+		Almacenamiento.get(0).Cantidad++;
+		System.out.println(Almacenamiento.get(0).Cantidad);
+
 	}
 }
