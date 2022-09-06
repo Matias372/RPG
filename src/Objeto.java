@@ -7,6 +7,8 @@ public class Objeto implements Serializable{
 	public String Nombre = null;
 	public int Cantidad=0;
 	public String Categoria = null;
+	public String Equipo=null;//Arma, Armadura, Casco, Escudo
+	public int Mano=1;
 	public String Descripcion = null;
 	public int ValorCompra= 0;
 	public int ValorVenta= 0;

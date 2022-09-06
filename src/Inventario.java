@@ -8,13 +8,11 @@ import java.util.Scanner;
 public class Inventario {
 
 	
-		
-		public int F=20;
-		public int C=6;
-	//GENERAR ATRIBUTOS DE LA CLASE (MATRIZ[][]= OBJECT()?)
-		//Arraylist....como cambiar una variable del objeto en la posicion x. Ej: aumentar en 1 la Cantidad del objeto en la posision i.
 		ArrayList<Objeto> Mochila = new ArrayList<Objeto>();
-	
+		Objeto Arma = new Objeto(); 
+		Objeto Armadura = new Objeto();
+		Objeto Casco = new Objeto();
+		Objeto Escudo = new Objeto();
 	
 		//UTILIZAR SOLO CUANDO SE GENERA UNA NUEVA PARTIDA Y DESPUES DE GENERAR EL INVENTARIO.
 		private void LimpiarMochila(){
@@ -154,11 +152,7 @@ public class Inventario {
 			
 		}
 		
-	//---------------------------------------------------------------------------------------------------------------	
-	//Organizar OBJETO DENTRO DEL INVENTARIO
-	private void OrganizarAZ() {
-		
-	}
+	
 	//---------------------------------------------------------------------------------------------------------------
 	//VENDER OBJETO
 	public int Vender() {
@@ -268,6 +262,11 @@ public class Inventario {
 		
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------	
+	//Organizar OBJETO DENTRO DEL INVENTARIO
+	public void OrganizarAZ() {
+		
+	}
 	
 	
 	//VER INVENTARIO. DESCRIPCIONES DE OBJETOS, SI ES EQUIPO PODER EQUIPARLO... PASARLO A OBJETO (Arma, Armadura, Casco, Escudo)
@@ -275,8 +274,9 @@ public class Inventario {
 		
 	}
 	
-	public Objeto Equipar() {
+	public void Equipar() { 
 		
-		return ;
+		
+		
 	}
 }

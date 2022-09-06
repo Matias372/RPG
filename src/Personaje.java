@@ -3,19 +3,66 @@ import java.util.Scanner;
 public class Personaje {
 
 	private String Ubicacion="Ciudad"; // Ciudad / Mazmorra
-	private int Piso=0;// piso de mazmorra, si esta en ciudad ser cero.
+	private Integer Piso=0;// piso de mazmorra, si esta en ciudad ser cero.
 	public String Nombre;
 	public boolean Salir = false;
 	public boolean Seguro = true; // Ciudad=True / Masmorra= False.  usar estado para verificar si se puede dormir
-	//ESTADISTICAS
-	int Vida = 100;
-	int VidaMax = 100; //vida maximo
-	int Mana = 100;
-	int ManaMax =100; //mana maximo
-	int Fuerza = 5;
-	int Agilidad = 5;
-	int Defensa = 5;
-	int Inteligencia = 5;
+	
+	//ESTADISTICAS BASE
+	Integer Vida_Base = 100;
+	Integer Mana_Base = 100;
+	Integer Fuerza_Base = 5;
+	Integer Agilidad_Base = 5;
+	Integer Defensa_Base = 5;
+	Integer Inteligencia_Base = 5;
+	
+	//ESTADISTICAS BONIF_EQUIPO
+	Integer Arma_Bonif_Vida = 0;
+	Integer Armadura_Bonif_Vida = 0;
+	Integer Casco_Bonif_Vida = 0;
+	Integer Escudo_Bonif_Vida = 0;
+	Integer Arma_Bonif_Mana = 0;
+	Integer Armadura_Bonif_Mana = 0;
+	Integer Casco_Bonif_Mana = 0;
+	Integer Escudo_Bonif_Mana = 0;
+	Integer Arma_Bonif_Atk = 0;
+	Integer Armadura_Bonif_Atk = 0;
+	Integer Casco_Bonif_Atk = 0;
+	Integer Escudo_Bonif_Atk = 0; 
+	Integer Arma_Bonif_Agi = 0;
+	Integer Armadura_Bonif_Agi = 0;
+	Integer Casco_Bonif_Agi = 0;
+	Integer Escudo_Bonif_Agi = 0;
+	Integer Arma_Bonif_Def = 0;
+	Integer Armadura_Bonif_Def = 0;
+	Integer Casco_Bonif_Def = 0;
+	Integer Escudo_Bonif_Def = 0;
+	Integer Arma_Bonif_Int = 0;
+	Integer Armadura_Bonif_Int = 0;
+	Integer Casco_Bonif_Int = 0;
+	Integer Escudo_Bonif_Int = 0;
+	
+	//ESTADISTICAS Bonif
+	Integer Vida_Bonif = Arma_Bonif_Vida + Armadura_Bonif_Vida + Casco_Bonif_Vida + Escudo_Bonif_Vida;
+	Integer Mana_Bonif = Arma_Bonif_Mana + Armadura_Bonif_Mana + Casco_Bonif_Mana + Escudo_Bonif_Mana;
+	Integer Fuerza_Bonif = Arma_Bonif_Atk + Armadura_Bonif_Atk + Casco_Bonif_Atk + Escudo_Bonif_Atk;
+	Integer Agilidad_Bonif = Arma_Bonif_Agi + Armadura_Bonif_Agi + Casco_Bonif_Agi + Escudo_Bonif_Agi;
+	Integer Defensa_Bonif = Arma_Bonif_Def + Armadura_Bonif_Def + Casco_Bonif_Def + Escudo_Bonif_Def;
+	Integer Inteligencia_Bonif = Arma_Bonif_Int + Armadura_Bonif_Int + Casco_Bonif_Int + Escudo_Bonif_Int;
+	
+	
+	//ESTADISTICAS TOTALES
+	Integer Mana_Total = Vida_Base + Vida_Bonif; //mana maximo
+	Integer Vida_Total = Mana_Base + Mana_Bonif; //vida maximo
+	Integer Fuerza_Total = Fuerza_Base + Fuerza_Bonif;
+	Integer Agilidad_Total = Agilidad_Base + Agilidad_Bonif;
+	Integer Defensa_Total = Defensa_Base + Defensa_Bonif;
+	Integer Inteligencia_Total = Inteligencia_Base + Inteligencia_Bonif;
+	
+	//ESTADISTICAS ADAPTABLES (que se van modificando a medida que juega)
+	Integer Vida = Vida_Total;
+	Integer Mana = Mana_Total;
+	
 	//variables extra
 	public float Dinero = 0;
 	public float Experiencia =0;
@@ -104,8 +151,8 @@ public class Personaje {
 		case "SI":
 			if(Seguro == true) {
 				System.out.println("Te fuiste a descansar a tu hogar.");
-				Vida = VidaMax;
-				Mana = ManaMax;
+				Vida = Vida_Total;
+				Mana = Mana_Total;
 				System.out.println("...Recuperaste la salud y mana al dormir.");
 				//vuelve solo a Accion();
 			}else {
