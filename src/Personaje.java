@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Personaje {
@@ -312,6 +313,68 @@ public class Personaje {
 				break;
 		
 		}
+	}
+	
+	
+	public void VerificarEquipoBonif (Objeto Arma_bonif, Objeto Armadura_bonif, Objeto Casco_bonif, Objeto Escudo_bonif) {
+		
+	}
+	
+	//Usar Posion.
+	public void Usar( ArrayList <Objeto> inventario ) {
+		
+		Scanner Respuesta = new Scanner(System.in);
+		System.out.println("Deseas usar un objeto?"); //verificar si quiere vender. if
+		System.out.println("-SI\n-NO");
+		String decision = Respuesta.nextLine();
+		decision = decision.toUpperCase();
+		
+		if(decision == "SI") {
+			
+			for(Integer i=0; i < inventario.size(); i++) {
+				System.out.println("- "+inventario.get(i).Nombre);
+			}
+			System.out.println("- Cancelar");
+			// preguntar cual quiere Vender. 
+			boolean OK = false;
+			while (OK == false) { // si no ubica el objeto repite la pregunta.
+				System.out.println("Cual objeto deseas usar?");
+				decision = Respuesta.nextLine();
+				
+				if(decision == "Cancelar") {
+					OK = true; 
+				}else{
+					
+					for(Integer i=0; i < inventario.size() ; i++ ) {
+						
+						if(inventario.get(i).Nombre == decision) {
+							OK = true;
+							//rellenar if xxxxx.Posion_Tipo ==
+							if(inventario.get(i).Posion_Tipo == "Vida") {
+								
+								Vida = Math.min((Vida + inventario.get(i).Equipo_Recupera_Vida), Vida_Total); //devuelve el numero mas chico asi que si la vida recuperada es mayor a la vida total solo devuelve la total.
+								
+							}else if(inventario.get(i).Posion_Tipo == "Mana") {
+								
+								Mana = Math.min((Mana + inventario.get(i).Equipo_Recupera_Mana), Mana_Total); //devuelve el numero mas chico asi que si la Mana recuperada es mayor a la Mana total solo devuelve la total.
+								
+							}
+							
+						}else {
+							System.out.println("No se entendio la respuesta.");
+						}
+					}
+			
+				}
+			}
+		}else if (decision == "NO") {
+			
+		}else {
+			System.out.println("No se entendio la respuesta.");
+		};
+		
+		
+		
 	}
 	
 }

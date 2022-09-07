@@ -51,13 +51,13 @@ public class Inventario {
 	//---------------------------------------------------------------------------------------------------------------
 	//COLOCAR OBJETO EN INVENTARIO
 	
-		public void GuardarObjeto(Objeto Item, int Limit, int Cantidad) {
+		public void GuardarObjeto(Objeto Item, Integer Limit, Integer Cantidad) {
 			
 			boolean colocado = false;
 			if (Item.Categoria == "Consumible") {
 				
 				
-				for(int i=0; i < Mochila.size() ; i++ ) {
+				for(Integer i=0; i < Mochila.size() ; i++ ) {
 						
 					if(colocado == false && Mochila.get(i).Cod_id == Item.Cod_id) {
 							
@@ -106,7 +106,7 @@ public class Inventario {
 					if(decision == "SI") {
 						
 						//for{for{}} para mostrar todos los objetos
-						for(int i=0; i < Mochila.size(); i++) {
+						for(Integer i=0; i < Mochila.size(); i++) {
 							System.out.println("- "+Mochila.get(i).Nombre);
 						}
 						System.out.println("- Descartar");
@@ -118,7 +118,7 @@ public class Inventario {
 								colocado = true;
 							}else{
 								
-								for(int i=0; i < Mochila.size() ; i++ ) {
+								for(Integer i=0; i < Mochila.size() ; i++ ) {
 									
 									if(colocado == false && Mochila.get(i).Nombre == decision) {// ubicar objeto por nombre.
 										
@@ -155,9 +155,9 @@ public class Inventario {
 	
 	//---------------------------------------------------------------------------------------------------------------
 	//VENDER OBJETO
-	public int Vender() {
+	public Integer Vender() {
 		
-		int x=0;
+		Integer x=0;
 		Scanner Respuesta = new Scanner(System.in);
 		System.out.println("Deseas vender un objeto?"); //verificar si quiere vender. if
 		System.out.println("-SI\n-NO");
@@ -165,7 +165,7 @@ public class Inventario {
 		decision = decision.toUpperCase();
 			if(decision == "SI") {
 				
-				for(int i=0; i < Mochila.size(); i++) {
+				for(Integer i=0; i < Mochila.size(); i++) {
 					System.out.println("- "+Mochila.get(i).Nombre);
 				}
 				System.out.println("- Cancelar");
@@ -174,11 +174,11 @@ public class Inventario {
 				System.out.println("Cual objeto deseas vender?");
 				decision = Respuesta.nextLine();
 				boolean Ubicado =false;
-				if(decision == "Atras") {
+				if(decision == "Cancelar") {
 					
 				}else{
 					
-					for(int i=0; i < Mochila.size() ; i++ ) {
+					for(Integer i=0; i < Mochila.size() ; i++ ) {
 						
 						if(Mochila.get(i).Nombre == decision) {//VENDE EQUIPO
 							
@@ -205,7 +205,7 @@ public class Inventario {
 								
 								while(Ok == false) {
 									System.out.println("tienes " + Mochila.get(i).Cantidad + ". Cuantos deseas vender?");
-									int Cant_Vender = Respuesta.nextInt();
+									Integer Cant_Vender = Respuesta.nextInt();
 									
 									if(Cant_Vender <= Mochila.get(i).Cantidad) {
 										System.out.println("Estas seguro de vender " + Mochila.get(i).Cantidad + " " + Mochila.get(i).Nombre + "?");
@@ -279,4 +279,7 @@ public class Inventario {
 		
 		
 	}
+	
+	
+	
 }

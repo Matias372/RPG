@@ -5,6 +5,7 @@ public class TEST {
 
 	public static void main(String args[]) {
 		
+		/*
 		String Codigo="Obj0001";
 		Objeto Obj_Temporal = new Objeto();
 		Inventario TestMochila = new Inventario();
@@ -29,6 +30,11 @@ public class TEST {
 		System.out.println(Almacenamiento.get(0).Cantidad);
 		Almacenamiento.get(0).Cantidad++;
 		System.out.println(Almacenamiento.get(0).Cantidad);
+		*/
 
+		
+		
+		
+		
 	}
 }

@@ -16,8 +16,7 @@ public class GeneracionDeObjeto {
 		Posion_Basica.ValorCompra= 100;
 		Posion_Basica.ValorVenta=20;
 		Posion_Basica.Categoria= "Consumible";
-		Posion_Basica.Bonif_Atributo1="Vida";
-		Posion_Basica.Bonif_cant1= 10;
+		
 		
 		//GUARDAR Posion_Basica EN ARCHIVO
 				try {
