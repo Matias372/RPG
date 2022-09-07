@@ -16,6 +16,8 @@ public class GeneracionDeObjeto {
 		Posion_Basica.ValorCompra= 100;
 		Posion_Basica.ValorVenta=20;
 		Posion_Basica.Categoria= "Consumible";
+		Posion_Basica.Posion_Tipo= "Vida";
+		Posion_Basica.Equipo_Recupera_Vida = 25;
 		
 		
 		//GUARDAR Posion_Basica EN ARCHIVO
@@ -35,10 +37,11 @@ public class GeneracionDeObjeto {
 		Daga_Vieja.Cod_id= "Eq0001";
 		Daga_Vieja.Nombre= "Daga Vieja";
 		Daga_Vieja.Descripcion="Una vieja daga oxidada.";
-		Daga_Vieja.ValorCompra= 250;
-		Daga_Vieja.ValorVenta=35;
+		Daga_Vieja.ValorCompra= 200;
+		Daga_Vieja.ValorVenta=25;
 		Daga_Vieja.Categoria= "Equipo";
-		Daga_Vieja.Obj_ATK= 2;
+		Daga_Vieja.Equipo= "Arma";
+		Daga_Vieja.Obj_ATK= 1;
 		
 		
 		//GUARDAR Posion_Basica EN ARCHIVO
